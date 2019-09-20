@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="jumbotron">
+            <h1 class="text-center">{{title}}</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-header bg-primary text-white">
+                        Convert from : {{from}}
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <select v-model="from" class="form-control">
+                                <option :value="currency.id" v-for="currency in formattedCurrencies">
+                                    {{currency.currencyName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-header bg-success text-white">
+                        Convert to : {{to}}
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <select v-model="to" class="form-control">
+                                <option :value="currency.id" v-for="currency in formattedCurrencies">
+                                    {{currency.currencyName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="form-group text-center">
+                    <input type="number" v-model="amount" class="form-control mt-3" placeholder="Please Enter Amount">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-lg btn-danger mt-3" :disabled="disabled"
+                        @click="convertCurrencies()">{{loading ? 'Converting..' : 'Convert'}}</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center mt-3">{{calculatedResult}}</h1>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
