@@ -28,7 +28,6 @@ new Vue({
     computed: {
         formattedCurrencies() {
             return Object.values(this.currencies);
-
         },
         calculatedResult() {
             return (Number(this.amount) * this.result).toFixed(3);
