@@ -7,7 +7,8 @@ new Vue({
         from: '',
         to: '',
         result: 0,
-        loading: false
+        loading: false,
+        date: new Date()
     },
 
     mounted() {
